@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "json-server": "^0.16.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -14,10 +16,12 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "node ./server.js",
+    "dev": "concurrently \"react-scripts start\" \"node ./server.js\"",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server:static": "json-server --watch ./src/data/db.json --port 8080",
+    "server": "node ./server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
   }
 }
